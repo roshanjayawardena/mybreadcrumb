@@ -11,6 +11,8 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.router.url === '/') {
+      // assuming current user's role is designer.
+      // then user is navigated to designer's dashboard.
       const role = 'Designer';
       if (role === 'Designer') {
         this.router.navigate(['/designer']);
