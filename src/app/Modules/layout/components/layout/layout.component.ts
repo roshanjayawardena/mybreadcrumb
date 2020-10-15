@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BreadcrumbService } from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-layout',
@@ -7,7 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private breadcrumbService: BreadcrumbService
+  ) {}
 
   ngOnInit(): void {
     if (this.router.url === '/') {
@@ -15,6 +19,11 @@ export class LayoutComponent implements OnInit {
       // then user is navigated to designer's dashboard.
       const role = 'Designer';
       if (role === 'Designer') {
+        const isDesigner = true;
+        this.breadcrumbService.set('Home', {
+          routeInterceptor: (routeLink, breadcrumb) =>
+            isDesigner ? 'designer' : routeLink,
+        });
         this.router.navigate(['/designer']);
       }
     }

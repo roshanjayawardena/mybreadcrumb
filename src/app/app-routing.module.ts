@@ -7,7 +7,18 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     // canActivate: [AuthGuardService],
-    data: { breadcrumb: 'Home' },
+    data: { breadcrumb: 'Home'},
+    // data: {
+    //   breadcrumb: {
+    //     label: 'Home',
+    //     info: 'home',
+    //     // routeInterceptor: (routeLink, breadcrumb) => {
+    //     //   console.log(routeLink);
+    //     //   return routeLink + 'designer';
+    //     //   // return routeLink;
+    //     // },
+    //   },
+    // },
     children: [
       {
         path: 'designer',
